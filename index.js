@@ -1,7 +1,8 @@
 import "./env.js";
 import express from "express";
 import path from "path";
-import userRouter from "./routes/user.js";
+import userRouter from "./user/user.routes.js";
+import { connectUsingMongoose } from "./config/mongooseConfig.js";
 
 const app = express();
 
@@ -16,4 +17,5 @@ app.use("/api/user", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is listening at PORT : ${PORT}`);
+  connectUsingMongoose();
 });
